@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>com.melson</groupId>
-        <artifactId>retailer</artifactId>
+        <artifactId>L2R</artifactId>
         <version>0.0.1-dev</version>
         <relativePath>/../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
@@ -35,5 +35,18 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

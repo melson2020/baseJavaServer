@@ -4,15 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.melson</groupId>
-        <artifactId>retailer</artifactId>
+        <artifactId>L2R</artifactId>
         <version>0.0.1-dev</version>
         <relativePath>/../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.melson</groupId>
-    <artifactId>retailerstarter</artifactId>
+    <artifactId>starter</artifactId>
     <version>0.0.1-dev</version>
-    <name>retailerstarter</name>
+    <name>starter</name>
     <description>starter for project</description>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>1.8</java.version>
@@ -23,16 +24,19 @@
             <groupId>com.melson</groupId>
             <artifactId>webserver</artifactId>
             <version>0.0.1-dev</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.melson</groupId>
             <artifactId>wechatmini</artifactId>
             <version>0.0.1-dev</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.melson</groupId>
             <artifactId>base</artifactId>
             <version>0.0.1-dev</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,21 +57,33 @@
     </dependencies>
 
     <build>
+        <!-- 为war包取名 -->
+        <finalName>L2R</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <!-- 指定启动入口 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <fork>true</fork>
-                    <mainClass>com.melson.retailerstarter.RetailerstarterApplication</mainClass>
+                    <mainClass>com.melson..RetailerstarterApplication</mainClass>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
-                        </goals>
-                    </execution>
-                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
             </plugin>
         </plugins>
     </build>

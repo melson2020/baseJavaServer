@@ -1,7 +1,6 @@
 package com.melson.base.interceptor;
 
 import com.melson.base.cache.CacheKey;
-import com.melson.base.entity.StoreEmployee;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,12 +50,12 @@ public class SecurityInterceptor implements HandlerInterceptor {
                 if(StringUtils.isEmpty(userId)){
                     return false;
                 }
-                StoreEmployee employee=(StoreEmployee) cacheUtil.GetObjectValue(CacheKey.StoreEmployee, Map.class).get(userId);
-                if(employee==null){
-                    return false;
-                }
-                Integer permissionLev=employee.getPermission();
-                return permissionLev>=value;
+//                StoreEmployee employee=(StoreEmployee) cacheUtil.GetObjectValue(CacheKey.StoreEmployee, Map.class).get(userId);
+//                if(employee==null){
+//                    return false;
+//                }
+//                Integer permissionLev=employee.getPermission();
+                return true;
             }
         }
         return true;
